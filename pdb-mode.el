@@ -429,22 +429,22 @@ ATOM     13  C5  U   A   1       0.329   0.571   3.657  1.00 20.00\n")
 
 
 ;; PDB-MODE
-(defun pdb-mode ()							     
+(define-derived-mode pdb-mode fundamental-mode "pdb-mode"
   "PDB mode is set up to do a few useful things to PDB (protein databank 
 format) files.
 Other programs (MOLEMAN and PDBSET etc) do all this and more, but not 
 within an editor.
 pdb-mode commands can be accessed from the menu bar PDB or from the minibuffer
 (M-x pdb SPACE gives you a list of commands).
-Some mouse/key bindings aid PDB file navigation: 
-C-middlemouse selects residue where button clicked. 
+Some mouse/key bindings aid PDB file navigation:
+C-middlemouse selects residue where button clicked.
 C-pageup and C-pagedown jump to the previous/next residue.
 C-M-pageup and C-M-pagedown jump to the previous/next chain."
   (interactive)
-  
+
   ;; Set up mode stuff
-  (kill-all-local-variables)		   
-  
+  (kill-all-local-variables)
+
   (setq mode-name "PDB")
   (setq major-mode 'pdb-mode)
   (setq kill-whole-line t)
@@ -1622,6 +1622,6 @@ ATOM     11  O3* A   A   1       0.272  -1.450  -2.624  1.00 20.00\n"))
   (set-buffer-modified-p nil)
   (kill-buffer buffer))
 
-(run-hooks 'pdb-menu-hook 'pdb-mode-hook)
+(run-mode-hooks 'pdb-menu-hook 'pdb-mode-hook)
 
 (provide 'pdb))
